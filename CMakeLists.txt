@@ -5,7 +5,8 @@ include(CTest)
 enable_testing()
 
 set(SOURCES
-    src/Dictionary.cpp
+    src/SJT.cpp
+    src/Permutation.cpp
     src/main.cpp
 )
 
