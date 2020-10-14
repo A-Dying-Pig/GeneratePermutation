@@ -1,5 +1,15 @@
 #include "Permutation.hpp"
-#include <iostream>
+
+Permutation::Permutation(int n,PermutationType t):N(n),type(t)
+{   
+    if (N < 2)
+        cout <<"ERROR! N = 0 or 1, Permutation needs 2 element at least"<<endl;
+    max_index = 1;
+    for (int i = 2; i <= N; i++){
+        max_index *= i;
+    }
+    max_index --;
+}
 
 
 /* Convert a decimal number to corresponding value in ascending number system
@@ -13,19 +23,22 @@ vector<int> decimal2ascending(long val, int N)
     long current_radix = 1;
     bool found_largest_radix = false;
     //generating radix
-    for (int i = 1; i <= N; i++)
+    for (int i = 2; i <= N + 1; i++)
     {
         if(found_largest_radix){
             ret.push_back(0);
             continue;
         }
-        current_radix *= i;
         if (current_radix <= val)
             radix.push_back(current_radix);
         else
+        {
             found_largest_radix = true;
+            ret.push_back(0);
+        }
+        current_radix *= i;
     }
-    if(!found_largest_radix && current_radix * (N+1) <= val)
+    if(!found_largest_radix && current_radix <= val)
     {
         cout << "ERROR! N digits in ascending number are not enough to express val"<<endl;
         return ret;
@@ -67,23 +80,25 @@ long ascending2decimal(vector<int> val)
 vector<int> decimal2descending(long val, int N)
 {
     vector<int> ret,radix;
-    long current_radix = N+1;
+    long current_radix = 1;
     bool found_largest_radix = false;
-    radix.push_back(current_radix);
     //generating radix
-    for (int i = N; i > 2; i--)
+    for (int i = N + 1; i > 1; i--)
     {
         if(found_largest_radix){
             ret.push_back(0);
             continue;
         }
-        current_radix *= i;
         if (current_radix <= val)
             radix.push_back(current_radix);
         else
+        {
             found_largest_radix = true;
+            ret.push_back(0);
+        }
+        current_radix *= i;
     }
-    if(!found_largest_radix && current_radix * 2 <= val)
+    if(!found_largest_radix && current_radix <= val)
     {
         cout << "ERROR! N digits in descending number are not enough to express val"<<endl;
         return ret;
@@ -96,7 +111,6 @@ vector<int> decimal2descending(long val, int N)
         ret.push_back(qoutient);
         val -= qoutient * (*it);
     }
-    ret.push_back(val);
     return ret;
 }
 
@@ -115,22 +129,25 @@ long descending2decimal(vector<int> val)
 }
 
 
-/* Convert a number in descending/acending number system to vector<int>
- * @param val: number
- * @param N: number has N digits 
- * @return: vector<int>
- */
-vector<int> number2vec(long val, int N)
+/* input/output for vector<int>*/
+void output_vector(vector<int> val)
 {
-    int remainder = 0;
-    vector<int> ret;
-    for (int i = 0; i < N; i++)
-    {
-        remainder = val % 10;
-        ret.push_back(remainder);
-        val = (val - remainder) / 10;
-    }
-    reverse(ret.begin(),ret.end());
-    return ret;
+    for (vector<int>::iterator it = val.begin(); it != val.end(); it++)
+        cout << (*it) << ' ';
+    cout << endl;
 }
 
+
+vector<int> input_vector()
+{
+    vector<int> ret;
+    int temp;
+    cin >> temp;
+    ret.push_back(temp);
+    while (cin.get() != '\n')
+    { 
+        cin >> temp; 
+        ret.push_back(temp);
+    }
+    return ret;
+}
