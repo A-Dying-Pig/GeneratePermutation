@@ -67,13 +67,33 @@ public:
     */
     virtual long permutation2index(vector<int> perm) = 0;
 
-    /* test algorithm performance
-    * @return: time spent during the process
+    /*traverse index to generate all permutation
+    * @return: all permutation
     */
-    virtual long generate_all_permutation() = 0;
+    virtual vector< vector<int> > permutation_from_index() = 0;
+
+    /* use original algorithm to generate all
+    * if there is no original algorithm, set sub-class corresponding function empty
+    * @return: all permutations
+    */
+    virtual vector< vector<int> > permutation() = 0;
 
     /* print all permuatation*/
     virtual void print_all_permutation() = 0;
+
+    /* use original algorithm to next permutation
+    * @return: next permutation
+    */
+    virtual vector<int> next(vector<int> perm) = 0;
+
+    /* use original algorithm to next permutation with improvement
+    * @return: next permutation
+    */
+    virtual vector<int> next_improve(vector<int> perm) = 0;
+
+    virtual vector<vector<int> > permutation_iteration() = 0;
+    virtual vector<vector<int> > permutation_iteration_improve() = 0;
+
 };
 
 //convertion between decimal number and ascending/descending number

@@ -15,8 +15,13 @@ public:
     long median2index(vector<int> median);
     vector<int> index2permutation(long index);
     long permutation2index(vector<int> perm);
-    long generate_all_permutation();
+    vector< vector<int> > permutation_from_index();
+    vector< vector<int> > permutation();
     void print_all_permutation();
+    vector<int> next(vector<int> perm);
+    vector<int> next_improve(vector<int> perm);
+    vector<vector<int> > permutation_iteration();
+    vector<vector<int> > permutation_iteration_improve();
 };
 
 
