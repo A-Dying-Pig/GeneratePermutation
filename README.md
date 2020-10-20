@@ -9,11 +9,16 @@ For every algorithm, any specific **permutation** maps to an **index** one by on
 When involving N elements in permutation, integers from 1 to N (1 and N included) are used to represent different elements.
 
 To compile and run the program:
+
+```shell
 mkdir build
 cd build
 cmake ..
 make
 ./GeneratePermutation
+```
+
+
 
 Time and Space Complexity are considered for comparison. Experiments are on 2.9 GHz double Intel Core i5 WITH 8 GB 1867 MHz DDR3 Macbookpro. Please check experiment folder for running screenshot.
 
