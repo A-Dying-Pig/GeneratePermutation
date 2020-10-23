@@ -8,6 +8,8 @@ set(SOURCES
     src/Permutation.cpp
     src/SJT.cpp
     src/Dictionary.cpp
+    src/Ascending.cpp
+    src/Descending.cpp
     src/main.cpp
 )
 
